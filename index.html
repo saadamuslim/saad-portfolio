@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Saad Malik · Providing creative solutions</title>
+<meta name="description" content="Video editor and marketing lead for dawah organisations, scholars and creators. Reels, long-form edits, social media management. 6+ years, 1,500+ projects.">
+<meta property="og:title" content="Saad Malik · Providing creative solutions">
+<meta property="og:description" content="Video editor and marketing lead for dawah organisations, scholars and creators.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Amiri:wght@700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0a0b; --surface:#131315; --surface2:#1a1a1d; --line:rgba(255,255,255,.08);
+  --text:#f2efea; --muted:#9a968f; --accent:#f5a524; --rec:#ff3b30;
+  --display:'Bricolage Grotesque',system-ui,sans-serif; --body:'Inter',system-ui,sans-serif; --mono:'JetBrains Mono',ui-monospace,monospace;
+  --wrap:1180px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--body);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+/* film grain */
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:100;opacity:.07;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* nav */
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+.nav.scrolled{background:rgba(10,10,11,.82);backdrop-filter:blur(12px);border-color:var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{font-family:var(--display);font-weight:800;letter-spacing:.04em;font-size:18px}
+.logo span{color:var(--accent)}
+.nav ul{display:flex;gap:30px;list-style:none;font-size:14px;color:var(--muted)}
+.nav ul a:hover{color:var(--text)}
+.btn{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:15px;padding:13px 22px;border-radius:999px;transition:transform .2s,background .2s,color .2s;cursor:pointer;border:0;font-family:var(--body)}
+.btn:hover{transform:translateY(-2px)}
+.btn-accent{background:var(--accent);color:#111}
+.btn-ghost{background:transparent;color:var(--text);border:1px solid rgba(255,255,255,.22)}
+.btn-ghost:hover{border-color:var(--text)}
+.btn-sm{padding:9px 16px;font-size:13px}
+
+/* hero */
+.hero{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:center;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:-20%;background:
+  radial-gradient(40% 35% at 70% 40%,rgba(245,165,36,.20),transparent 70%),
+  radial-gradient(35% 30% at 20% 75%,rgba(255,59,48,.10),transparent 70%);animation:drift 18s ease-in-out infinite alternate}
+@keyframes drift{to{transform:translate(-4%,3%) scale(1.08)}}
+.bar{position:absolute;left:0;right:0;height:9vh;background:#000;z-index:2;display:flex;align-items:center}
+.bar.top{top:0}.bar.bottom{bottom:0}
+.bar .wrap{width:100%;display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:#6d6a64;text-transform:uppercase}
+.bar.top .wrap{padding-top:58px}
+.viewfinder{position:absolute;inset:calc(9vh + 22px) 24px;pointer-events:none;z-index:1}
+.viewfinder i{position:absolute;width:26px;height:26px;border-color:rgba(255,255,255,.35);border-style:solid}
+.viewfinder i:nth-child(1){top:0;left:0;border-width:1px 0 0 1px}
+.viewfinder i:nth-child(2){top:0;right:0;border-width:1px 1px 0 0}
+.viewfinder i:nth-child(3){bottom:0;left:0;border-width:0 0 1px 1px}
+.viewfinder i:nth-child(4){bottom:0;right:0;border-width:0 1px 1px 0}
+.rec{position:absolute;top:calc(9vh + 40px);right:56px;z-index:3;font-family:var(--mono);font-size:13px;display:flex;align-items:center;gap:10px;color:#d8d4cd}
+.rec b{width:9px;height:9px;border-radius:50%;background:var(--rec);animation:blink 1.2s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.hero-inner{position:relative;z-index:3;padding:14vh 0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+.hero h1{font-family:var(--display);font-weight:800;font-size:clamp(46px,8.4vw,118px);line-height:.95;letter-spacing:-.025em;margin:22px 0 18px}
+.hero h1 .thin{font-weight:400;color:var(--muted)}
+.tagline{font-family:var(--display);font-size:clamp(22px,2.6vw,34px);font-weight:600}
+.tagline em{font-style:normal;color:var(--accent)}
+.hero p.lede{max-width:560px;color:var(--muted);margin:16px 0 34px;font-size:17px}
+.hero .ctas{display:flex;gap:14px;flex-wrap:wrap}
+.play-ic{width:22px;height:22px;border-radius:50%;background:#111;display:grid;place-items:center}
+.play-ic::after{content:"";border-left:7px solid var(--accent);border-top:5px solid transparent;border-bottom:5px solid transparent;margin-left:2px}
+
+/* stats */
+.stats{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--surface)}
+.stats .wrap{padding-top:34px;padding-bottom:38px}
+.alh{display:flex;align-items:center;gap:14px;justify-content:center;margin-bottom:22px;color:var(--muted);font-size:13px;letter-spacing:.12em;text-transform:uppercase;font-family:var(--mono)}
+.alh .ar{font-family:'Amiri',serif;font-size:24px;color:var(--accent);letter-spacing:0;text-transform:none}
+.stat-row{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;text-align:center}
+.stat b{display:block;font-family:var(--display);font-weight:800;font-size:clamp(30px,3.6vw,48px);line-height:1.1}
+.stat span{font-size:13px;color:var(--muted)}
+
+/* sections */
+section.block{padding:120px 0 0}
+.sec-head{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:44px;flex-wrap:wrap}
+.scene{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.scene b{color:var(--accent);font-weight:500}
+h2{font-family:var(--display);font-weight:800;font-size:clamp(34px,4.6vw,60px);line-height:1;letter-spacing:-.02em}
+.sec-head p{max-width:380px;color:var(--muted)}
+
+/* featured 11th hour */
+.feature{position:relative;border-radius:22px;overflow:hidden;border:1px solid var(--line);
+  background:linear-gradient(120deg,#16110a 0%,#0e0e10 55%,#141416 100%);padding:56px 48px;display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:center}
+.feature::before{content:"";position:absolute;right:-10%;top:-40%;width:60%;height:180%;background:radial-gradient(closest-side,rgba(245,165,36,.18),transparent);pointer-events:none}
+.feature .tag{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;border:1px solid rgba(245,165,36,.5);color:var(--accent);padding:6px 12px;border-radius:999px}
+.feature h3{font-family:var(--display);font-weight:800;font-size:clamp(56px,8vw,112px);line-height:.9;letter-spacing:-.03em;margin:22px 0 12px}
+.feature h3 sup{font-size:.35em;vertical-align:top;position:relative;top:.35em;color:var(--accent)}
+.feature .sub{color:var(--muted);font-size:17px;max-width:460px}
+.feature ul{list-style:none;position:relative}
+.feature li{display:flex;justify-content:space-between;gap:16px;padding:16px 0;border-bottom:1px solid var(--line);font-size:15px}
+.feature li span:first-child{color:var(--muted)}
+.feature li span:last-child{text-align:right;font-weight:500}
+.feature .btn{margin-top:26px}
+
+/* video cards */
+.sublabel{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:64px 0 20px;display:flex;align-items:center;gap:14px}
+.sublabel::after{content:"";flex:1;height:1px;background:var(--line)}
+.reels{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.vcard{position:relative;border-radius:16px;overflow:hidden;background:var(--surface2);cursor:pointer;border:1px solid var(--line);display:block;width:100%;text-align:left;color:inherit;font:inherit;padding:0}
+.vcard .thumb{position:relative;aspect-ratio:16/9;overflow:hidden;background:#111}
+.reels .vcard .thumb{aspect-ratio:9/16}
+.vcard img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease,filter .4s;filter:saturate(.9) brightness(.85)}
+.vcard:hover img{transform:scale(1.05);filter:none}
+.vcard .thumb::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.7),transparent 55%)}
+.vcard .pbtn{position:absolute;z-index:2;left:50%;top:50%;transform:translate(-50%,-50%) scale(.9);width:58px;height:58px;border-radius:50%;background:rgba(245,165,36,.95);display:grid;place-items:center;opacity:.9;transition:transform .3s,opacity .3s}
+.vcard:hover .pbtn{transform:translate(-50%,-50%) scale(1);opacity:1}
+.vcard .pbtn::after{content:"";border-left:15px solid #111;border-top:10px solid transparent;border-bottom:10px solid transparent;margin-left:4px}
+.vcard .meta{padding:16px 18px 18px}
+.vcard .meta b{display:block;font-weight:600;font-size:16px}
+.vcard .meta span{font-size:13px;color:var(--muted)}
+.reels .vcard .meta{position:absolute;bottom:0;left:0;right:0;z-index:2;padding:14px}
+.soon{margin-top:18px;border:1px dashed rgba(255,255,255,.18);border-radius:16px;padding:30px 32px;display:grid;grid-template-columns:auto 1fr 1fr;gap:34px;align-items:center}
+.soon .pill{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--rec);display:flex;align-items:center;gap:8px;white-space:nowrap}
+.soon .pill::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--rec);animation:blink 1.2s steps(1) infinite}
+.soon b{display:block;font-family:var(--display);font-size:20px;margin-bottom:4px}
+.soon p{font-size:14px;color:var(--muted)}
+
+/* filmstrip */
+.strip{background:#000;padding:14px 0;overflow:hidden;position:relative;border-bottom:1px solid var(--line)}
+.strip::before,.strip::after{content:"";position:absolute;left:0;right:0;height:8px;z-index:2;
+  background:repeating-linear-gradient(90deg,transparent 0 10px,#2a2a2d 10px 22px,transparent 22px 30px)}
+.strip::before{top:3px}.strip::after{bottom:3px}
+.strip-track{display:flex;gap:10px;width:max-content;animation:roll 60s linear infinite}
+.strip:hover .strip-track{animation-play-state:paused}
+@keyframes roll{to{transform:translateX(-50%)}}
+.strip button{width:260px;aspect-ratio:16/9;border:0;padding:0;border-radius:6px;overflow:hidden;cursor:pointer;background:#141416;flex:none}
+.strip img{width:100%;height:100%;object-fit:cover;filter:saturate(.85) brightness(.8);transition:filter .3s}
+.strip button:hover img{filter:none}
+/* team */
+.team{display:grid;grid-template-columns:1.1fr 1fr;gap:36px;align-items:center;margin-bottom:28px;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:14px}
+.team img{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:12px}
+.team p{font-family:var(--display);font-size:22px;font-weight:600;line-height:1.4;padding-right:20px}
+/* campaigns */
+.camps{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.camp{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:34px;display:flex;flex-direction:column;justify-content:space-between;min-height:250px;transition:border-color .3s}
+.camp:hover{border-color:rgba(245,165,36,.4)}
+.camp .k{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
+.camp h3{font-family:var(--display);font-size:24px;font-weight:600;margin-top:8px}
+.camp .res{margin-top:28px}
+.camp .res b{display:block;font-family:var(--display);font-weight:800;font-size:clamp(34px,3.6vw,48px);line-height:1;color:var(--accent)}
+.camp .res span{display:block;color:var(--muted);font-size:15px;margin-top:10px}
+
+/* credits */
+.credits{background:linear-gradient(#0a0a0b,#050505);padding:120px 0 110px;margin-top:120px;border-top:1px solid var(--line);text-align:center}
+.credits h2{margin-bottom:12px}
+.credits .note{color:var(--muted);margin-bottom:56px}
+.names{columns:3;column-gap:40px;max-width:980px;margin:0 auto}
+.names div{break-inside:avoid;padding:9px 0;font-size:17px;font-weight:500}
+.names div small{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--accent);margin-left:8px;vertical-align:2px}
+.names .more{color:var(--muted);font-style:italic;font-weight:400}
+.pages{margin-top:64px}
+.pages .scene{margin-bottom:18px}
+.chips{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.chip{border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:10px 18px;font-family:var(--mono);font-size:14px;transition:border-color .2s,color .2s}
+.chip:hover{border-color:var(--accent);color:var(--accent)}
+
+/* about */
+.about{display:grid;grid-template-columns:.85fr 1.15fr;gap:64px;align-items:center}
+.portrait{position:relative;border-radius:20px;overflow:hidden;aspect-ratio:13/20;background:#111;max-width:380px;width:100%;justify-self:center}
+.portrait img{width:100%;height:100%;object-fit:cover}
+.portrait::after{content:"";position:absolute;inset:0;background:linear-gradient(to left,rgba(10,10,11,.75),transparent 22%),radial-gradient(120% 90% at 45% 35%,transparent 50%,rgba(10,10,11,.8)),linear-gradient(to top,rgba(10,10,11,.6),transparent 40%)}
+.portrait .cap{position:absolute;left:20px;bottom:18px;z-index:2;font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#cfcac2}
+.about .bio p{color:#cfcac2;font-size:18px;margin-bottom:18px}
+.about .bio p:first-of-type{font-family:var(--display);font-size:26px;color:var(--text);font-weight:600;line-height:1.35}
+.role{display:flex;flex-wrap:wrap;gap:10px;margin:26px 0 30px}
+.role span{background:var(--surface2);border:1px solid var(--line);padding:8px 14px;border-radius:10px;font-size:14px}
+.cert{display:flex;gap:18px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px;max-width:470px}
+.cert img{width:150px;height:84px;object-fit:cover;border-radius:9px}
+.cert b{display:block;font-size:15px}
+.cert span{font-size:13px;color:var(--muted)}
+
+/* services */
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.svc{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:32px}
+.svc .ic{width:46px;height:46px;border-radius:12px;background:rgba(245,165,36,.12);display:grid;place-items:center;margin-bottom:22px}
+.svc .ic svg{width:22px;height:22px;stroke:var(--accent);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.svc h3{font-family:var(--display);font-size:22px;font-weight:600;margin-bottom:8px}
+.svc p{color:var(--muted);font-size:15px}
+.svc-also{margin-top:18px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;border:1px solid var(--line);border-radius:14px;padding:18px 24px;color:var(--muted);font-size:15px}
+.svc-also b{color:var(--text);font-weight:600}
+
+/* testimonial */
+.quote{max-width:920px;margin:0 auto;text-align:center}
+.quote .mark{font-family:var(--display);font-size:120px;line-height:.6;color:var(--accent);height:56px}
+.quote blockquote{font-family:var(--display);font-size:clamp(22px,2.5vw,31px);line-height:1.4;font-weight:400}
+.quote blockquote strong{font-weight:600;color:var(--accent)}
+.quote .who{margin-top:30px}
+.quote .who b{display:block;font-size:17px}
+.quote .who span{color:var(--muted);font-size:14px}
+
+/* contact */
+.contact{margin:140px 0 0;padding:110px 0;border-top:1px solid var(--line);background:radial-gradient(60% 80% at 50% 100%,rgba(245,165,36,.14),transparent 70%)}
+.contact .wrap{text-align:center}
+.contact h2{font-size:clamp(42px,7vw,96px);max-width:900px;margin:18px auto 22px}
+.contact p.lede{color:var(--muted);max-width:520px;margin:0 auto 40px;font-size:17px}
+.cbtns{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
+.cinfo{margin-top:36px;display:flex;flex-wrap:wrap;gap:12px 34px;justify-content:center;font-family:var(--mono);font-size:13px;color:var(--muted)}
+.cinfo a:hover{color:var(--text)}
+footer{border-top:1px solid var(--line);padding:28px 0;font-size:13px;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center;padding:24px}
+.lb.open{display:flex}
+.lb .frame{width:min(1100px,100%);aspect-ratio:16/9;background:#000;border-radius:14px;overflow:hidden}
+.lb.vertical .frame{width:auto;height:min(86vh,900px);aspect-ratio:9/16}
+.lb iframe{width:100%;height:100%;border:0}
+.lb .x{position:absolute;top:20px;right:24px;width:46px;height:46px;border-radius:50%;background:#1d1d20;color:#fff;border:1px solid var(--line);font-size:22px;cursor:pointer}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease}
+.rv.in{opacity:1;transform:none}
+
+@media (max-width:960px){
+  .nav ul{display:none}
+  .stat-row{grid-template-columns:repeat(3,1fr);row-gap:26px}
+  .feature{grid-template-columns:1fr;padding:40px 28px}
+  .reels{grid-template-columns:repeat(2,1fr)}
+  .grid3{grid-template-columns:repeat(2,1fr)}
+  .soon{grid-template-columns:1fr;gap:18px}
+  .names{columns:2}
+  .about{grid-template-columns:1fr;gap:40px}
+  .portrait{max-width:420px}
+  .services{grid-template-columns:1fr}
+  .team{grid-template-columns:1fr;gap:18px}
+  .team p{padding:0 8px 10px;font-size:19px}
+  .strip button{width:200px}
+}
+@media (max-width:600px){
+  .wrap{padding:0 18px}
+  section.block{padding-top:90px}
+  .bar .wrap span:nth-child(2){display:none}
+  .rec{right:30px}
+  .viewfinder{inset:calc(9vh + 14px) 14px}
+  .stat-row{grid-template-columns:repeat(2,1fr)}
+  .stat:last-child{grid-column:span 2}
+  .grid3{grid-template-columns:1fr}
+  .camps{grid-template-columns:1fr}
+  .camp{padding:26px;min-height:0}
+  .names{columns:1}
+  .cert img{width:110px;height:70px}
+  .logo{font-size:16px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .rv{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="wrap">
+    <a href="#top" class="logo">SAAD MALIK<span>.</span></a>
+    <ul>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#campaigns">Campaigns</a></li>
+      <li><a href="#clients">Clients</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="btn btn-accent btn-sm" href="https://wa.me/923202215500?text=Assalamu%20alaikum%20Saad%2C%20I%27d%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener">WhatsApp</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="bar top"><div class="wrap"><span>Scene 01</span><span>Pakistan · Worldwide</span><span>4K · 24 fps</span></div></div>
+  <div class="viewfinder"><i></i><i></i><i></i><i></i></div>
+  <div class="rec"><b></b>REC <span id="tc">00:00:00:00</span></div>
+  <div class="wrap hero-inner">
+    <div class="eyebrow">Video Editor · Marketing Lead</div>
+    <h1><span class="thin">Saad</span><br>Malik</h1>
+    <div class="tagline">Providing <em>creative solutions.</em></div>
+    <p class="lede">Editing, production and marketing for dawah organisations, scholars and creators across the UK, Ireland, Canada, Australia, the US and Pakistan.</p>
+    <div class="ctas">
+      <button class="btn btn-accent" data-yt="6aHWe5lXYwk"><span class="play-ic"></span>Watch showreel</button>
+      <a class="btn btn-ghost" href="#contact">Get a quote</a>
+    </div>
+  </div>
+  <div class="bar bottom"><div class="wrap"><span>Reels · Podcasts · Documentaries</span><span>Premiere Pro</span><span>Scroll ↓</span></div></div>
+</header>
+
+<div class="strip" aria-label="Recent work">
+  <div class="strip-track" id="strip"></div>
+</div>
+
+<div class="stats">
+  <div class="wrap">
+    <div class="alh"><span class="ar">الحمد لله</span><span>Alhamdulillah</span></div>
+    <div class="stat-row">
+      <div class="stat"><b>6+</b><span>years in dawah media</span></div>
+      <div class="stat"><b>1,500+</b><span>video projects</span></div>
+      <div class="stat"><b>500M+</b><span>views across channels I've edited for</span></div>
+      <div class="stat"><b>23+</b><span>clients</span></div>
+      <div class="stat"><b>6</b><span>countries</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- WORK -->
+<section class="block" id="work">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div><div class="scene"><b>Scene 02</b> — Work</div><h2>Selected work</h2></div>
+      <p>Podcasts, documentaries, series and reels. Tap any card to play.</p>
+    </div>
+
+    <div class="feature rv">
+      <div>
+        <span class="tag">Flagship series</span>
+        <h3>11<sup>th</sup> Hour</h3>
+        <p class="sub">A Ramadan-nights podcast series for Tuaha ibn Jalil, released every year. A team production, with millions of views on YouTube, Alhamdulillah.</p>
+        <a class="btn btn-accent" href="https://www.youtube.com/@TuahaIbnJalil/podcasts" target="_blank" rel="noopener">Watch the podcasts →</a>
+      </div>
+      <ul>
+        <li><span>Seasons</span><span>6</span></li>
+        <li><span>Season 6</span><span>Led recording &amp; editing</span></li>
+        <li><span>Earlier seasons</span><span>Contributed across seasons</span></li>
+        <li><span>Channel</span><span>@TuahaIbnJalil</span></li>
+      </ul>
+    </div>
+
+    <div class="sublabel rv">Short-form</div>
+    <div class="reels rv">
+      <button class="vcard" data-yt="-pBWljMTEEg" data-v><div class="thumb"><img loading="lazy" onerror="this.style.visibility='hidden'" src="https://i.ytimg.com/vi/-pBWljMTEEg/hqdefault.jpg" alt="Reel 01"><span class="pbtn"></span></div><div class="meta"><b>Reel 01</b></div></button>
+      <button class="vcard" data-yt="6t68QyZTyvY" data-v><div class="thumb"><img loading="lazy" onerror="this.style.visibility='hidden'" src="https://i.ytimg.com/vi/6t68QyZTyvY/hqdefault.jpg" alt="Reel 02"><span class="pbtn"></span></div><div class="meta"><b>Reel 02</b></div></button>
+      <button class="vcard" data-yt="hb3WGq8p6R0" data-v><div class="thumb"><img loading="lazy" onerror="this.style.visibility='hidden'" src="https://i.ytimg.com/vi/hb3WGq8p6R0/hqdefault.jpg" alt="Reel 03"><span class="pbtn"></span></div><div class="meta"><b>Reel 03</b></div></button>
+      <button class="vcard" data-yt="cF9I6gG_7Bs" data-v><div class="thumb"><img loading="lazy" onerror="this.style.visibility='hidden'" src="https://i.ytimg.com/vi/cF9I6gG_7Bs/hqdefault.jpg" alt="Reel 04"><span class="pbtn"></span></div><div class="meta"><b>Reel 04</b></div></button>
+    </div>
+
+    <div class="sublabel rv">Long-form</div>
+    <div class="grid3 rv">
+      <button class="vcard" data-yt="jvB-x1EIyJU"><div class="thumb"><img loading="lazy" onerror="this.style.visibility='hidden'" src="https://i.ytimg.com/vi/jvB-x1EIyJU/hqdefault.jpg" alt="Documentary"><span class="pbtn"></span></div><div class="meta"><b>Documentary</b><span>Shot &amp; edited · Youth Club</span></div></button>
+      <button class="vcard" data-yt="Plnhjc5MWcs"><div class="thumb"><img loading="lazy" onerror="this.style.visibility='hidden'" src="https://i.ytimg.com/vi/Plnhjc5MWcs/hqdefault.jpg" alt="Instructor intro film"><span class="pbtn"></span></div><div class="meta"><b>Instructor intro film</b><span>Tuaha ibn Jalil</span></div></button>
+      <button class="vcard" data-yt="NEtmhOLtYqA"><div class="thumb"><img loading="lazy" onerror="this.style.visibility='hidden'" src="https://i.ytimg.com/vi/NEtmhOLtYqA/hqdefault.jpg" alt="Full podcast"><span class="pbtn"></span></div><div class="meta"><b>Full podcast</b><span>Tuaha ibn Jalil</span></div></button>
+      <button class="vcard" data-yt="Lsin4gzUMqY"><div class="thumb"><img loading="lazy" onerror="this.style.visibility='hidden'" src="https://i.ytimg.com/vi/Lsin4gzUMqY/hqdefault.jpg" alt="Podcast clip"><span class="pbtn"></span></div><div class="meta"><b>Podcast clip</b><span>Youth Club</span></div></button>
+      <button class="vcard" data-yt="2VxH6h_crGk"><div class="thumb"><img loading="lazy" onerror="this.style.visibility='hidden'" src="https://i.ytimg.com/vi/2VxH6h_crGk/hqdefault.jpg" alt="Highlights"><span class="pbtn"></span></div><div class="meta"><b>Highlights</b><span>Event highlights film</span></div></button>
+      <button class="vcard" data-yt="6aHWe5lXYwk"><div class="thumb"><img loading="lazy" onerror="this.style.visibility='hidden'" src="https://i.ytimg.com/vi/6aHWe5lXYwk/hqdefault.jpg" alt="Promo"><span class="pbtn"></span></div><div class="meta"><b>Promo</b><span>Promotional film</span></div></button>
+    </div>
+
+    <div class="soon rv">
+      <span class="pill">In post-production</span>
+      <div><b>Winds of Change Tour</b><p>Documentary coverage of a tour across Pakistan's major cities, with multiple speakers. Led the coverage team.</p></div>
+      <div><b>A new documentary</b><p>Shot and edited by me. Releasing soon, in sha Allah.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CAMPAIGNS -->
+<section class="block" id="campaigns">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div><div class="scene"><b>Scene 03</b> — Campaigns</div><h2>Campaigns that delivered</h2></div>
+      <p>As Head of Marketing &amp; Media at Youth Club, I plan and run the campaigns behind its tours, camps and courses. Results, Alhamdulillah.</p>
+    </div>
+    <div class="team rv">
+      <img src="assets/team.jpg" alt="Saad leading a media team meeting at Youth Club HQ">
+      <div><div class="scene">Behind the scenes</div><p>Planning sessions with the media team at Youth Club HQ, where every campaign starts on the whiteboard.</p></div>
+    </div>
+    <div class="camps">
+      <div class="camp rv"><div><div class="k">Youth Club · Feb–Mar 2026</div><h3>Ramadan Umrah 2026</h3></div><div class="res"><b>Target achieved</b><span>Campaign across Instagram and YouTube (@youthclubpk).</span></div></div>
+      <div class="camp rv"><div><div class="k">Youth Club · 2026</div><h3>Summer Camp 2026</h3></div><div class="res"><b>Closed early</b><span>More sign-ups than expected, so registrations had to close.</span></div></div>
+      <div class="camp rv"><div><div class="k">Youth Club · Hajj package</div><h3>Hajj 2027</h3></div><div class="res"><b>70–80% sold</b><span>Of seats, with a full marketing strategy built for the package.</span></div></div>
+      <div class="camp rv"><div><div class="k">Parts 1 &amp; 2 · Online + onsite</div><h3>Ilm Essentials Programme 2027</h3></div><div class="res"><b>200+</b><span>Registrations for a 6-month course.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTS (credits) -->
+<section class="credits" id="clients">
+  <div class="wrap">
+    <div class="scene rv"><b>Scene 04</b> — Credits</div>
+    <h2 class="rv">Trusted by</h2>
+    <p class="note rv">Organisations, scholars and creators I've worked with.</p>
+    <div class="names rv" id="names"></div>
+    <div class="pages rv">
+      <div class="scene">Pages I manage</div>
+      <div class="chips">
+        <a class="chip" href="https://www.instagram.com/youthclubpk/" target="_blank" rel="noopener">@youthclubpk</a>
+        <a class="chip" href="https://www.instagram.com/tuahajalil/" target="_blank" rel="noopener">@tuahajalil</a>
+        <a class="chip" href="https://www.instagram.com/abusaaddofficial/" target="_blank" rel="noopener">@abusaaddofficial</a>
+        <a class="chip" href="https://www.instagram.com/maulviwithanattitude/" target="_blank" rel="noopener">@maulviwithanattitude</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="block" id="about">
+  <div class="wrap about">
+    <div class="portrait rv"><img src="assets/saad.jpg" alt="Saad Malik"><span class="cap">Saad Malik</span></div>
+    <div class="bio rv">
+      <div class="scene"><b>Scene 05</b> — About</div>
+      <p>Assalamu alaikum, I'm Saad. For six years I've edited and produced content for dawah.</p>
+      <p>Today I lead Marketing &amp; Media at Youth Club HQ, managing a creative team and the campaigns behind its retreats, tours, Hajj and Umrah. Alongside that, I edit podcasts, documentaries, series and reels for scholars, creators and Islamic organisations around the world.</p>
+      <p>The aim is simple: work done with ihsaan, for the sake of Allah.</p>
+      <div class="role"><span>Head of Marketing &amp; Media, Youth Club</span><span>Freelance video editor</span><span>Adobe Premiere Pro</span></div>
+      <div class="cert"><img src="assets/certificate.jpg" alt="Receiving a certificate of appreciation at Wilderness Retreat 2024"><div><b>Certificate of appreciation</b><span>Wilderness Retreat 2024</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="block" id="services">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div><div class="scene"><b>Scene 06</b> — Services</div><h2>What I can do for you</h2></div>
+      <p>From one reel to a full season. Every project starts with a quick chat.</p>
+    </div>
+    <div class="services">
+      <div class="svc rv"><div class="ic"><svg viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 9l3 2-3 2z"/></svg></div><h3>Reels &amp; short-form</h3><p>Scroll-stopping clips cut from lectures, podcasts and events, with strong hooks, clean captions and tight pacing.</p></div>
+      <div class="svc rv"><div class="ic"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M10 9l5 3-5 3z"/></svg></div><h3>Long-form edits</h3><p>Podcasts, documentaries and series, from raw multi-camera footage to a finished, polished episode.</p></div>
+      <div class="svc rv"><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/></svg></div><h3>Social media management</h3><p>Content planning, posting and growing pages for scholars and organisations.</p></div>
+    </div>
+    <div class="svc-also rv"><b>Also:</b> Campaign strategy for events, tours and courses.</div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section class="block" id="testimonial">
+  <div class="wrap quote rv">
+    <div class="mark">“</div>
+    <blockquote>You went through around 100 files and lots of proofreading of the words, as well as choice of soundtrack to make this video… I am very picky with designers and video editors, especially from outside the UK, however <strong>your quality of work and work ethics is beyond my expectations.</strong></blockquote>
+    <div class="who"><b>Omar Hajaj</b><span>Founder, Yaseen Youth Development · UK</span></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="scene rv"><b>Final scene</b> — Contact</div>
+    <h2 class="rv">Let's make something worth watching.</h2>
+    <p class="lede rv">Tell me about your project and I'll come back with ideas and a quote. WhatsApp is the fastest way to reach me.</p>
+    <div class="cbtns rv">
+      <a class="btn btn-accent" href="https://wa.me/923202215500?text=Assalamu%20alaikum%20Saad%2C%20I%27d%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener">WhatsApp me</a>
+      <a class="btn btn-ghost" href="mailto:saadmalikyc@gmail.com?subject=Project%20enquiry">Email me</a>
+      <a class="btn btn-ghost" href="https://www.instagram.com/saadamuslim2.0/" target="_blank" rel="noopener">Instagram</a>
+    </div>
+    <div class="cinfo rv">
+      <span>+92 320 2215500</span>
+      <a href="mailto:saadmalikyc@gmail.com">saadmalikyc@gmail.com</a>
+      <a href="https://www.linkedin.com/in/saad-malik-63620a290/" target="_blank" rel="noopener">LinkedIn ↗</a>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap"><span>© <span id="yr">2026</span> Saad Malik</span><span>Providing creative solutions.</span></div></footer>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Video player">
+  <button class="x" id="lbx" aria-label="Close">×</button>
+  <div class="frame" id="lbf"></div>
+</div>
+
+<script>
+// clients
+const clients=[
+ ["Youth Club","PK"],["IERA Canada","CA"],["MATW","INTL"],["Tuaha ibn Jalil","PK"],["Maulvi with an Attitude","PK"],
+ ["Abu Saad","PK"],["Fajr Islamic Education","AU"],["Broskii · Muslim Ski Trips","UK"],["Yaseen Youth Development","UK"],
+ ["Omar Hajaj","UK"],["Omar Esa","UK"],["Safar Publications","UK"],["Shaykh Hasan Ali","UK"],["Adnan Rashid","UK"],
+ ["Dewan Chaudhary","UK"],["Lonely Orphans","UK"],["An-Naseeha Foundation","UK"],["Deenies","UK"],
+ ["Al Kowthar Fragrance","IE"],["Silicon Streams Podcast","US"],["The Arabic Guide","PK"],["Aqib Fareed","PK"],["313 Academy","PK"]
+];
+const nm=document.getElementById('names');
+nm.innerHTML=clients.map(([n,c])=>`<div>${n}<small>${c}</small></div>`).join('')+'<div class="more">and many more</div>';
+
+// filmstrip
+const ids=["jvB-x1EIyJU","Plnhjc5MWcs","NEtmhOLtYqA","Lsin4gzUMqY","2VxH6h_crGk","6aHWe5lXYwk"];
+const st=document.getElementById('strip');
+st.innerHTML=[...ids,...ids,...ids,...ids].map(i=>`<button data-yt="${i}" aria-label="Play video"><img loading="lazy" onerror="this.style.visibility='hidden'" src="https://i.ytimg.com/vi/${i}/hqdefault.jpg" alt=""></button>`).join('');
+
+// nav background
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40),{passive:true});
+
+// timecode
+const tc=document.getElementById('tc'),t0=performance.now(),p=n=>String(n).padStart(2,'0');
+(function tick(){const s=(performance.now()-t0)/1000,f=Math.floor(s*24)%24,S=Math.floor(s);
+ tc.textContent=`${p(Math.floor(S/3600))}:${p(Math.floor(S/60)%60)}:${p(S%60)}:${p(f)}`;requestAnimationFrame(tick)})();
+
+// reveal
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+// lightbox
+const lb=document.getElementById('lb'),lbf=document.getElementById('lbf');
+function openV(id,vert){lb.classList.toggle('vertical',!!vert);
+ lbf.innerHTML=`<iframe src="https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&modestbranding=1" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen title="Video"></iframe>`;
+ lb.classList.add('open');document.body.style.overflow='hidden'}
+function closeV(){lb.classList.remove('open');lbf.innerHTML='';document.body.style.overflow=''}
+document.querySelectorAll('[data-yt]').forEach(b=>b.addEventListener('click',()=>openV(b.dataset.yt,b.hasAttribute('data-v'))));
+document.getElementById('lbx').onclick=closeV;
+lb.addEventListener('click',e=>{if(e.target===lb)closeV()});
+addEventListener('keydown',e=>{if(e.key==='Escape')closeV()});
+</script>
+</body>
+</html>
